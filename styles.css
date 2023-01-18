@@ -51,6 +51,7 @@ p {
 
 .section-btns {
     display: flex;
+    align-items: center;
 }
 
 .btn-text {
@@ -63,20 +64,25 @@ p {
     height: 40px;
     margin-right: auto;
     display: flex;
-    border: 1px solid red;
     padding: 10px;
     gap: 15px;
-    align-items: baseline;
+    align-items: center;
     justify-content: center;
     border-radius: 10px;
     background-color: #F5F6FA;
 }
 
 .section-add-remove-btn > img {
-    align-self: flex-start;
-    position: relative;
+    cursor: pointer;
+    fill: #5357B6;
 }
 
 .section-reply-btn {
     align-items: center;
+    cursor: pointer;
 }
+
+.reply-icon {
+    margin-right: 6px;
+}
+
