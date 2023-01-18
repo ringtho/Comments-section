@@ -1,8 +1,82 @@
 body, html {
     margin: 0;
     background-color: #C5C6EF;
+    font-family: 'Rubik', sans-serif;
+    padding: 1em 0.5em;
 }
 
-html {
+* {
     box-sizing: border-box;
+}
+
+p {
+    margin: 0;
+}
+
+.section {
+    background-color: #FFF;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    border-radius: 8px;
+    margin-bottom: 1em;
+}
+
+.section-header {
+    display: flex;
+    gap: 1em;
+    align-items: center;
+    
+}
+
+.section-avatar {
+    width: 32px;
+    height: 32px;
+}
+
+.section-username {
+    color: #334253;
+    font-weight: 500;
+}
+
+.section-time {
+    color: #67727E;
+}
+
+.section-comment {
+    color: #67727E;
+    line-height: 24px;
+}
+
+.section-btns {
+    display: flex;
+}
+
+.btn-text {
+    color: #5357B6;
+    font-weight: 500;
+}
+
+.section-add-remove-btn {
+    width: 100px;
+    height: 40px;
+    margin-right: auto;
+    display: flex;
+    border: 1px solid red;
+    padding: 10px;
+    gap: 15px;
+    align-items: baseline;
+    justify-content: center;
+    border-radius: 10px;
+    background-color: #F5F6FA;
+}
+
+.section-add-remove-btn > img {
+    align-self: flex-start;
+    position: relative;
+}
+
+.section-reply-btn {
+    align-items: center;
 }
