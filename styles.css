@@ -82,12 +82,22 @@ p {
     cursor: pointer;
 }
 
-.reply-icon {
+.reply-icon,
+.delete-icon,
+.edit-icon {
     margin-right: 6px;
 }
 
 .section-replies {
     padding-left: 1em;
     border-left: 2px solid #979797;
+}
+
+.red {
+    color: #ED6368;
+}
+
+.mg {
+    margin-right: 1em;
 }
 
