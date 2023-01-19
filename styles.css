@@ -126,17 +126,35 @@ button {
     font-size: 16px;
     font-family: 'Rubik', sans-serif;
     font-weight: 500;
-    background-color: #5357B6;
     padding: 12px 30px;
-    margin-left: auto;
     border-radius: 8px;
     border: none;
     cursor: pointer;
 }
 
-button:hover,
-button:focus {
+.submit-btn {
+    background-color: #5357B6;
+    margin-left: auto;
+}
+
+.submit-btn:hover,
+.submit-btn:focus {
     background-color: #2B2D64;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    margin: 16px;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.modal-btns {
+    display: flex;
+    gap: 12px;
 }
 
 .red {
@@ -146,4 +164,13 @@ button:focus {
 .mg {
     margin-right: 1em;
 }
+
+.cancel-btn {
+    background-color: #67727E;
+}
+
+.delete-btn {
+    background-color: #ED6368;
+}
+
 
