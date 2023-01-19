@@ -121,6 +121,10 @@ textarea {
     color: #67727E;
 }
 
+textarea:focus {
+    outline-color: #5357B6;
+}
+
 button {
     color: #FFF;
     font-size: 16px;
