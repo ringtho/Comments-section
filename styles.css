@@ -1,6 +1,6 @@
 body, html {
     margin: 0;
-    background-color: #C5C6EF;
+    background-color: #E9EBF0;
     font-family: 'Rubik', sans-serif;
     padding: 1em 0.5em;
 }
@@ -84,5 +84,10 @@ p {
 
 .reply-icon {
     margin-right: 6px;
+}
+
+.section-replies {
+    padding-left: 1em;
+    border-left: 2px solid #979797;
 }
 
