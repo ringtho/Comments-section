@@ -1,6 +1,6 @@
 body, html {
     margin: 0;
-    background-color: #E9EBF0;
+    background-color: #F2F2F2;
     font-family: 'Rubik', sans-serif;
     padding: 1em 0.5em;
 }
@@ -90,7 +90,7 @@ p {
 
 .section-replies {
     padding-left: 1em;
-    border-left: 2px solid #979797;
+    border-left: 3px solid #E9EBF0;
 }
 
 .you-tag {
@@ -100,6 +100,43 @@ p {
     font-size: 13px;
     font-weight: 500;
     padding: 3px;
+}
+
+.add-comment-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+textarea {
+    height: 96px;
+    width: 100%;
+    border: 1px solid #E9EBF0;
+    border-radius: 8px;
+    resize: none;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 400;
+    color: #67727E;
+}
+
+button {
+    color: #FFF;
+    font-size: 16px;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 500;
+    background-color: #5357B6;
+    padding: 12px 30px;
+    margin-left: auto;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover,
+button:focus {
+    background-color: #2B2D64;
 }
 
 .red {
