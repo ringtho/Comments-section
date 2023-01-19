@@ -74,10 +74,10 @@ p {
 
 .section-add-remove-btn > img {
     cursor: pointer;
-    fill: #5357B6;
 }
 
 .section-reply-btn {
+    display: flex;
     align-items: center;
     cursor: pointer;
 }
@@ -103,6 +103,12 @@ p {
 }
 
 .add-comment-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.comments-container {
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -168,6 +174,11 @@ button {
     gap: 12px;
 }
 
+.delete-edit-btns {
+    display: flex;
+    margin-left: auto;
+}
+
 .red {
     color: #ED6368;
 }
@@ -184,6 +195,50 @@ button {
     background-color: #ED6368;
 }
 
-@media (min-width: 580px){
+.large-screen {
+    display: none;
+}
 
+@media (min-width: 580px){
+    .add-comment-container,
+    .comments{
+        flex-direction: row;
+    }
+
+    .add-comment-container {
+        width: 100%;
+    }
+
+    .add-comment,
+    .section-btns {
+        display: contents;
+    }
+
+    textarea,
+    .comments-container {
+        order: 1;
+    }
+
+    .submit-btn {
+        order: 2;
+        align-self: flex-start;
+    }
+
+    .section-reply-btn {
+        margin-left: auto;
+    }
+
+    .section-add-remove-btn {
+        flex-direction: column;
+        height: 100px;
+        width: 40px;
+    }
+
+    .small-screen {
+        display: none;
+    }
+
+    .large-screen {
+        display: block;
+    }
 }
