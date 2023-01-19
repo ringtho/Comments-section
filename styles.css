@@ -146,6 +146,13 @@ button {
     background-color: #2B2D64;
 }
 
+.plus-icon:hover,
+.plus-icon:focus,
+.minus-icon:hover,
+.minus-icon:focus {
+    filter: invert(37%) sepia(67%) saturate(574%) hue-rotate(200deg) brightness(84%) contrast(94%);
+}
+
 .modal {
     position: fixed;
     top: 0;
@@ -177,4 +184,6 @@ button {
     background-color: #ED6368;
 }
 
+@media (min-width: 580px){
 
+}
