@@ -115,7 +115,7 @@ p {
 }
 
 textarea {
-    height: 96px;
+    min-height: 96px;
     width: 100%;
     border: 1px solid #E9EBF0;
     border-radius: 8px;
@@ -147,9 +147,14 @@ button {
     margin-left: auto;
 }
 
-.submit-btn:hover,
-.submit-btn:focus {
-    background-color: #2B2D64;
+button:hover,
+button:focus {
+    background-color: #C5C6EF;
+}
+
+.btn-text:hover,
+.btn-text:focus {
+    color: #C5C6EF;
 }
 
 .plus-icon:hover,
@@ -217,6 +222,7 @@ button {
     textarea,
     .comments-container {
         order: 1;
+        width: 100%;
     }
 
     .submit-btn {
@@ -240,5 +246,21 @@ button {
 
     .large-screen {
         display: block;
+    }
+}
+
+@media (min-width: 762px){
+    body {
+        padding-block: 32px;
+    }
+
+    main {
+        max-width: 730px;
+        margin: 0 auto;
+    }
+
+    .section-replies {
+        padding-left: 32px;
+        margin-left: 32px;
     }
 }
