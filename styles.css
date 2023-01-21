@@ -129,6 +129,7 @@ textarea {
 
 textarea:focus {
     outline-color: #5357B6;
+    caret-color: #5357B6;
 }
 
 button {
@@ -155,6 +156,11 @@ button:focus {
 .btn-text:hover,
 .btn-text:focus {
     color: #C5C6EF;
+}
+
+.red:hover,
+.red:focus {
+    color: #FFB8BB;
 }
 
 .plus-icon:hover,
