@@ -1,22 +1,25 @@
 import data from "./data.json" assert { type: "json" }
-import { getPostHtml, getAddNewCommentHtml } from "./utils.js"
+import { getPostHtml, getAddNewCommentHtml, getNewReplyHtml } from "./utils.js"
 
 const mainEl = document.getElementById("main")
+const replyBtn = document.getElementById("reply-btn")
 
 document.addEventListener("click", function(e){
-    console.log(e.target)
+    if(e.target.id === "reply-btn"){
+        handleReplyBtnClick(e.target.dataset.id)
+    }
 })
 
-console.log(data)
+console.log(getPosts(data))
 
+function handleReplyBtnClick(username){
+    document.getElementById("new-reply").innerHTML = getNewReplyHtml(username)
+}
 
 function getPosts(data){
-
     let commentsHtml = ""
-
     data["comments"].forEach(comment => {
         const post = getPostHtml(comment)
-        console.log(post)
         commentsHtml += post
     })
     return commentsHtml

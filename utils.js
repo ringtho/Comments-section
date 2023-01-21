@@ -10,7 +10,7 @@ function getPostHtml(comment){
                     <p class="section-time">${comment.createdAt}</p>
                     <div class="section-reply-btn large-screen">
                         <img class="reply-icon" src="/images/icon-reply.svg" />
-                        <span class="btn-text">Reply</span>
+                        <span class="btn-text" id="reply-btn" data-id=${comment.user.username}>Reply</span>
                     </div>
                 </div>
                 <p class="section-comment">${comment.content}</p>
@@ -24,7 +24,7 @@ function getPostHtml(comment){
                 </div>
                 <div id="replyBtn" class="section-reply-btn small-screen">
                     <img class="reply-icon" src="/images/icon-reply.svg" />
-                    <span class="btn-text">Reply</span>
+                    <span class="btn-text" id="reply-btn">Reply</span>
                 </div>
             </div>
         </section>
@@ -33,7 +33,8 @@ function getPostHtml(comment){
     if (comment.replies.length){
         replyHtml += getReplyHtml(comment.replies)
     }
-    const html = post + replyHtml
+    const spanEl = `<span id="new-reply"></span>`
+    const html = post + replyHtml + spanEl
     return html
 }
 
@@ -42,7 +43,6 @@ function getReplyHtml(replyArr){
     replyArr.forEach(reply => {
         let isCurrentUser = reply.user.username === data.currentUser.username
         const replies = `
-        <section class="section-replies">
             <section class="section comments">
                 <div class="comments-container">
                     <div class="section-header">
@@ -91,12 +91,25 @@ function getReplyHtml(replyArr){
                     }
                 </div>
             </section>
-        </section>
         `
         replyHtml += replies
 
     })
-    return replyHtml
+    return `<section class="section-replies">${replyHtml}</section>`
+}
+
+function getNewReplyHtml(username){
+    return `
+    <section class="section comments">
+        <div class="add-comment-container">
+            <textarea>@${username} </textarea>
+            <div class="section-header add-comment">
+                <img class="section-avatar" src=${data.currentUser.image.png} />
+                <button class="submit-btn">REPLY</button>
+            </div>
+        </div>
+    </section>
+    `
 }
 
 function getAddNewCommentHtml(data){
@@ -113,4 +126,4 @@ function getAddNewCommentHtml(data){
     `
 }
 
-export { getPostHtml, getAddNewCommentHtml }
+export { getPostHtml, getAddNewCommentHtml, getNewReplyHtml }
