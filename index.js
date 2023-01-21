@@ -13,6 +13,7 @@ document.addEventListener("click", function(e){
 console.log(getPosts(data))
 
 function handleReplyBtnClick(username){
+    console.log(username)
     document.getElementById("new-reply").innerHTML = getNewReplyHtml(username)
 }
 

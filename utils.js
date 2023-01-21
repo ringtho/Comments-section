@@ -24,7 +24,7 @@ function getPostHtml(comment){
                 </div>
                 <div id="replyBtn" class="section-reply-btn small-screen">
                     <img class="reply-icon" src="/images/icon-reply.svg" />
-                    <span class="btn-text" id="reply-btn">Reply</span>
+                    <span class="btn-text" data-id=${comment.user.username} id="reply-btn">Reply</span>
                 </div>
             </div>
         </section>
