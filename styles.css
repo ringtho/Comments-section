@@ -210,6 +210,11 @@ button:focus {
     display: none;
 }
 
+.reply-username {
+    color: #5357B6;
+    font-weight: 500;
+}
+
 @media (min-width: 580px){
     .add-comment-container,
     .comments{
