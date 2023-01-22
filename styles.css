@@ -206,7 +206,7 @@ button:focus {
     background-color: #ED6368;
 }
 
-.large-screen {
+.large-screen, .hide {
     display: none;
 }
 

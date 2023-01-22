@@ -28,13 +28,13 @@ function getPostHtml(comment){
                 </div>
             </div>
         </section>
+        <span id="new-reply-${comment.user.username}"></span>
     `
     let replyHtml = ""
     if (comment.replies.length){
         replyHtml += getReplyHtml(comment.replies)
     }
-    const spanEl = `<span id="new-reply-${comment.user.username}"></span>`
-    const html = post + spanEl + replyHtml
+    const html = post + replyHtml
     return html
 }
 
@@ -54,20 +54,23 @@ function getReplyHtml(replyArr){
                         `<div class="delete-edit-btns">
                             <div class="section-reply-btn mg large-screen">
                                 <img class="delete-icon" src="/images/icon-delete.svg" />
-                                <span class="btn-text red">Delete</span>
+                                <span class="btn-text red" id="delete-btn">Delete</span>
                             </div>
                             <div class="section-reply-btn large-screen">
                                 <img class="edit-icon" src="/images/icon-edit.svg" />
-                                <span class="btn-text">Edit</span>
+                                <span class="btn-text" id="edit-btn" data-content=${reply.content}>Edit</span>
                         </div>
                         </div>` :
                         `<div class="section-reply-btn large-screen">
                             <img class="reply-icon" src="/images/icon-reply.svg" />
-                            <span class="btn-text">Reply</span>
+                            <span class="btn-text" data-id=${reply.user.username} id="reply-btn">Reply</span>
                         </div>`
                         }
                     </div>
-                    <p class="section-comment"><span class="reply-username">@${reply.replyingTo}</span> ${reply.content}</p>
+                    <span id="content">
+                        <p class="section-comment">
+                        <span class="reply-username">@${reply.replyingTo}</span> ${reply.content}</p>
+                    </span>
                 </div>
                 <div class="section-btns">
                     <div class="section-add-remove-btn">
@@ -78,19 +81,20 @@ function getReplyHtml(replyArr){
                     ${isCurrentUser ?
                     `<div class="section-reply-btn mg small-screen">
                     <img class="delete-icon" src="/images/icon-delete.svg" />
-                    <span class="btn-text red">Delete</span>
+                    <span class="btn-text red" id="delete-btn">Delete</span>
                     </div>
                     <div class="section-reply-btn small-screen">
                         <img class="edit-icon" src="/images/icon-edit.svg" />
-                        <span class="btn-text">Edit</span>
+                        <span class="btn-text" id="edit-btn" data-content=${reply.content}>Edit</span>
                     </div> `:
                     `<div class="section-reply-btn small-screen">
                         <img class="reply-icon" src="/images/icon-reply.svg" />
-                        <span class="btn-text">Reply</span>
+                        <span class="btn-text" data-id=${reply.user.username} id="reply-btn">Reply</span>
                     </div>`
                     }
                 </div>
             </section>
+            <span id="new-reply-${reply.user.username}"></span>
         `
         replyHtml += replies
 
@@ -126,4 +130,21 @@ function getAddNewCommentHtml(data){
     `
 }
 
-export { getPostHtml, getAddNewCommentHtml, getNewReplyHtml }
+function getDeleteModalHtml(){
+    return `
+    <section id="delete-modal" class="modal hide" >
+        <section class="section">
+
+            <p class="modal-header">Delete comment</p>
+            <p class="section-comment">Are you sure you want to delete this comment? This will remove the comment and can’t be undone.
+            </p>
+            <div class="modal-btns">
+                <button class="cancel-btn">NO, CANCEL</button>
+                <button class="delete-btn">YES, DELETE</button>
+            </div>
+        </section>
+    </section>
+    `
+}
+
+export { getPostHtml, getAddNewCommentHtml, getNewReplyHtml, getDeleteModalHtml }
