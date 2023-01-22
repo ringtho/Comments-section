@@ -133,14 +133,13 @@ function getAddNewCommentHtml(data){
 function getDeleteModalHtml(){
     return `
     <section id="delete-modal" class="modal hide" >
-        <section class="section">
-
+        <section class="section" id="delete">
             <p class="modal-header">Delete comment</p>
             <p class="section-comment">Are you sure you want to delete this comment? This will remove the comment and can’t be undone.
             </p>
             <div class="modal-btns">
-                <button class="cancel-btn">NO, CANCEL</button>
-                <button class="delete-btn">YES, DELETE</button>
+                <button class="cancel-btn" id="cancel-btn">NO, CANCEL</button>
+                <button class="delete-btn" id="delete-btn">YES, DELETE</button>
             </div>
         </section>
     </section>

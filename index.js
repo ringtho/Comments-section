@@ -6,6 +6,7 @@ import {
 const mainEl = document.getElementById("main")
 
 
+
 document.addEventListener("click", function(e){
     if(e.target.id === "reply-btn"){
         handleReplyBtnClick(e.target.dataset.id)
@@ -19,6 +20,10 @@ document.addEventListener("click", function(e){
     if (e.target.id === "delete-btn"){
         handleDeleteBtnClick()
     }
+
+    if (e.target.id === "cancel-btn"){
+        handleCancelBtnClick()
+    }
 })
 
 function handleReplyBtnClick(username){
@@ -28,12 +33,17 @@ function handleReplyBtnClick(username){
 
 function handleEditBtnClick(content){
     const contentEl = document.getElementById("content")
-    console.log(content)
 }
+
 
 function handleDeleteBtnClick(){
     const deleteModal = document.getElementById("delete-modal")
     deleteModal.classList.remove("hide")
+}
+
+function handleCancelBtnClick(){
+    const deleteModal = document.getElementById("delete-modal")
+    deleteModal.classList.add("hide")
 }
 
 function getPosts(data){
@@ -49,7 +59,7 @@ function getPosts(data){
 function renderPosts(data){
     mainEl.innerHTML = getPosts(data)
     mainEl.innerHTML += getAddNewCommentHtml(data)
-    mainEl.innerHTML += getDeleteModalHtml()
+    document.body.innerHTML += getDeleteModalHtml()
     
 }
 

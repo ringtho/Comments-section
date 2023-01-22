@@ -2,7 +2,10 @@ body, html {
     margin: 0;
     background-color: #F2F2F2;
     font-family: 'Rubik', sans-serif;
-    padding: 1em 0.5em;
+}
+
+main {
+    margin: 2em 1em;
 }
 
 * {
@@ -148,8 +151,8 @@ button {
     margin-left: auto;
 }
 
-button:hover,
-button:focus {
+.submit-btn:hover,
+.submit-btn:focus {
     background-color: #C5C6EF;
 }
 
@@ -159,8 +162,19 @@ button:focus {
 }
 
 .red:hover,
-.red:focus {
+.red:focus
+{
     color: #FFB8BB;
+}
+
+.delete-btn:hover,
+.delete-btn:focus {
+    background-color: #FFB8BB;
+}
+
+.cancel-btn:hover,
+.cancel-btn:focus {
+    background-color: #939596;
 }
 
 .plus-icon:hover,
@@ -174,20 +188,37 @@ button:focus {
     position: fixed;
     top: 0;
     right: 0;
-    margin: 16px;
     height: 100vh;
     display: flex;
     align-items: center;
+    padding: 1em;
+    background-color: rgba(0,0,0,0.5);
+    width: 100%;
+    
 }
 
 .modal-btns {
     display: flex;
     gap: 12px;
+    justify-content: center;
+}
+
+.modal-header {
+    font-size: 20px;
+    font-weight: 500;
+    color: #334253;
 }
 
 .delete-edit-btns {
     display: flex;
     margin-left: auto;
+}
+
+#delete {
+    max-width: 400px;
+    margin: 1em auto;
+    background-color: #FFF;
+    /* margin: 1em 0; */
 }
 
 .red {
