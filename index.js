@@ -2,7 +2,7 @@ import data from "./data.json" assert { type: "json" }
 import { getPostHtml, getAddNewCommentHtml, getNewReplyHtml } from "./utils.js"
 
 const mainEl = document.getElementById("main")
-const replyBtn = document.getElementById("reply-btn")
+
 
 document.addEventListener("click", function(e){
     if(e.target.id === "reply-btn"){
@@ -10,11 +10,8 @@ document.addEventListener("click", function(e){
     }
 })
 
-console.log(getPosts(data))
-
 function handleReplyBtnClick(username){
-    console.log(username)
-    document.getElementById("new-reply").innerHTML = getNewReplyHtml(username)
+    document.getElementById(`new-reply-${username}`).innerHTML = getNewReplyHtml(username)
 }
 
 function getPosts(data){

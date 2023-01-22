@@ -33,8 +33,8 @@ function getPostHtml(comment){
     if (comment.replies.length){
         replyHtml += getReplyHtml(comment.replies)
     }
-    const spanEl = `<span id="new-reply"></span>`
-    const html = post + replyHtml + spanEl
+    const spanEl = `<span id="new-reply-${comment.user.username}"></span>`
+    const html = post + spanEl + replyHtml
     return html
 }
 
