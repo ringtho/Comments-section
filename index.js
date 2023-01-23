@@ -3,9 +3,9 @@ import {
     getPostHtml, getAddNewCommentHtml, getNewReplyHtml, getDeleteModalHtml 
 } from "./utils.js"
 
-// let comments = data.comments
+let comments = data.comments
 
-let comments = []
+// let comments = []
 
 const mainEl = document.getElementById("main")
 const deleteModal = document.getElementById("delete-modal")
@@ -17,8 +17,14 @@ document.addEventListener("click", function(e){
     if(e.target.id === "submit-btn"){
         handleSubmitComment()
     }
+
+    if(e.target.id === "reply-submit"){
+        const id = parseInt(e.target.dataset.id)
+        handleSubmitReply(id)
+    }
+
     if(e.target.id === "reply-btn"){
-        handleReplyBtnClick(e.target.dataset.id)
+        handleReplyLinkClick(e.target.dataset)
     }
 
     if(e.target.id === "edit-btn"){
@@ -48,9 +54,33 @@ function handleSubmitComment(){
     renderPosts()
 }
 
-function handleReplyBtnClick(username){
-    const replyBtn = document.getElementById(`new-reply-${username}`)
-    replyBtn.innerHTML = getNewReplyHtml(username)
+function handleSubmitReply(id){
+    const replyText = document.getElementById("reply-submit-text").value
+    const newReply = comments.map(item => {
+        if (item.id === id){
+            const reply = {
+                "id": 10,
+                "content": replyText,
+                "createdAt" : "1 second ago",
+                "score": 0,
+                "replyingTo": item.user.username,
+                "user": data.currentUser,
+            }
+            item.replies.push(reply)
+            return item
+        }else {
+            return item
+        }
+    })
+    comments = newReply
+    renderPosts()
+}
+
+function handleReplyLinkClick(data){
+    const username = data.username
+    const id = data.id
+    const replyLink = document.getElementById(`new-reply-${username}`)
+    replyLink.innerHTML = getNewReplyHtml(username, id)
 }
 
 function handleEditBtnClick(content){

@@ -10,7 +10,8 @@ function getPostHtml(comment){
                     <p class="section-time">${comment.createdAt}</p>
                     <div class="section-reply-btn large-screen">
                         <img class="reply-icon" src="/images/icon-reply.svg" />
-                        <span class="btn-text" id="reply-btn" data-id=${comment.user.username}>Reply</span>
+                        <span class="btn-text" id="reply-btn" data-username=${comment.user.username} 
+                        data-id=${comment.id}>Reply</span>
                     </div>
                 </div>
                 <p class="section-comment">${comment.content}</p>
@@ -24,7 +25,8 @@ function getPostHtml(comment){
                 </div>
                 <div id="replyBtn" class="section-reply-btn small-screen">
                     <img class="reply-icon" src="/images/icon-reply.svg" />
-                    <span class="btn-text" data-id=${comment.user.username} id="reply-btn">Reply</span>
+                    <span class="btn-text" data-username=${comment.user.username} 
+                    data-id=${comment.id} id="reply-btn">Reply</span>
                 </div>
             </div>
         </section>
@@ -63,7 +65,8 @@ function getReplyHtml(replyArr){
                         </div>` :
                         `<div class="section-reply-btn large-screen">
                             <img class="reply-icon" src="/images/icon-reply.svg" />
-                            <span class="btn-text" data-id=${reply.user.username} id="reply-btn">Reply</span>
+                            <span class="btn-text" data-username=${reply.user.username} 
+                            data-id=${reply.id} id="reply-btn">Reply</span>
                         </div>`
                         }
                     </div>
@@ -89,7 +92,8 @@ function getReplyHtml(replyArr){
                     </div> `:
                     `<div class="section-reply-btn small-screen">
                         <img class="reply-icon" src="/images/icon-reply.svg" />
-                        <span class="btn-text" data-id=${reply.user.username} id="reply-btn">Reply</span>
+                        <span class="btn-text" data-username=${reply.user.username} 
+                        data-id=${reply.id} id="reply-btn">Reply</span>
                     </div>`
                     }
                 </div>
@@ -102,14 +106,14 @@ function getReplyHtml(replyArr){
     return `<section class="section-replies">${replyHtml}</section>`
 }
 
-function getNewReplyHtml(username){
+function getNewReplyHtml(username, id){
     return `
     <section class="section comments">
         <div class="add-comment-container">
-            <textarea>@${username} </textarea>
+            <textarea id="reply-submit-text">@${username} </textarea>
             <div class="section-header add-comment">
                 <img class="section-avatar" src=${data.currentUser.image.png} />
-                <button class="submit-btn">REPLY</button>
+                <button class="submit-btn" id="reply-submit" data-id=${id}>REPLY</button>
             </div>
         </div>
     </section>
