@@ -2,6 +2,7 @@ import data from "./data.json" assert { type: "json" }
 import { 
     getPostHtml, getAddNewCommentHtml, getNewReplyHtml, getDeleteModalHtml 
 } from "./utils.js"
+import { v4 as uuid } from 'https://jspm.dev/uuid'
 
 let comments = data.comments
 
@@ -33,7 +34,12 @@ document.addEventListener("click", function(e){
     }
 
     if (e.target.id === "delete-btn"){
-        handleDeleteBtnClick()
+        console.log(e.target.dataset.id)
+        handleDeleteLinkClick()
+    }
+
+    if(e.target.id === "delete-submit"){
+        console.log("Delete button clicked")
     }
 
     if (e.target.id === "cancel-btn"){
@@ -43,8 +49,8 @@ document.addEventListener("click", function(e){
 
 function handleSubmitComment(){
     const newCommentTextarea = document.getElementById("new-comment-text")
-    comments.push({
-        "id": data.comments.length + 1,
+    comments.unshift({
+        "id": uuid(),
         "content": newCommentTextarea.value,
         "createdAt" : "1 second ago",
         "score": 0,
@@ -59,14 +65,14 @@ function handleSubmitReply(id){
     const newReply = comments.map(item => {
         if (item.id === id){
             const reply = {
-                "id": 10,
+                "id": uuid(),
                 "content": replyText,
                 "createdAt" : "1 second ago",
                 "score": 0,
                 "replyingTo": item.user.username,
                 "user": data.currentUser,
             }
-            item.replies.push(reply)
+            item.replies.unshift(reply)
             return item
         }else {
             return item
@@ -87,7 +93,7 @@ function handleEditBtnClick(content){
     const contentEl = document.getElementById("content")
 }
 
-function handleDeleteBtnClick(){
+function handleDeleteLinkClick(){
     const deleteModal = document.getElementById("delete-modal")
     deleteModal.classList.remove("hide")
 }

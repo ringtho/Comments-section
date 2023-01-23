@@ -56,7 +56,7 @@ function getReplyHtml(replyArr){
                         `<div class="delete-edit-btns">
                             <div class="section-reply-btn mg large-screen">
                                 <img class="delete-icon" src="/images/icon-delete.svg" />
-                                <span class="btn-text red" id="delete-btn">Delete</span>
+                                <span class="btn-text red" id="delete-btn" data-id=${reply.id}>Delete</span>
                             </div>
                             <div class="section-reply-btn large-screen">
                                 <img class="edit-icon" src="/images/icon-edit.svg" />
@@ -84,7 +84,7 @@ function getReplyHtml(replyArr){
                     ${isCurrentUser ?
                     `<div class="section-reply-btn mg small-screen">
                     <img class="delete-icon" src="/images/icon-delete.svg" />
-                    <span class="btn-text red" id="delete-btn">Delete</span>
+                    <span class="btn-text red" id="delete-btn" data-id=${reply.id}>Delete</span>
                     </div>
                     <div class="section-reply-btn small-screen">
                         <img class="edit-icon" src="/images/icon-edit.svg" />
@@ -143,7 +143,7 @@ function getDeleteModalHtml(){
             </p>
             <div class="modal-btns">
                 <button class="cancel-btn" id="cancel-btn">NO, CANCEL</button>
-                <button class="delete-btn" id="delete-btn">YES, DELETE</button>
+                <button class="delete-btn" id="delete-submit">YES, DELETE</button>
             </div>
         </section>
     </section>
