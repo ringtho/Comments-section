@@ -4,7 +4,8 @@ import {
 } from "./utils.js"
 import { v4 as uuid } from 'https://jspm.dev/uuid'
 
-let comments = data.comments
+let comments = data.comments.map(comment => ({...comment, id: uuid()}))
+
 let deleteId = ""
 
 // let comments = []
@@ -21,7 +22,6 @@ document.addEventListener("click", function(e){
     }
 
     if(e.target.id === "reply-submit"){
-        // const id = parseInt(e.target.dataset.id)
         handleSubmitReply(e.target.dataset.id)
     }
 
@@ -62,10 +62,8 @@ function handleSubmitComment(){
 }
 
 function handleSubmitReply(id){
-    console.log(id)
     const replyText = document.getElementById("reply-submit-text").value
     const newReply = comments.map(item => {
-        console.log(item.id)
         if (item.id === id){
             const reply = {
                 "id": uuid(),
@@ -104,7 +102,6 @@ function handleDeleteLinkClick(){
 function handleDeleteSubmit(id){
     comments.forEach(item => {
         const repliesArr = item.replies.filter(reply => {
-            console.log(reply.id)
             if(reply.id != id){
                 return reply
             }
