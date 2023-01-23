@@ -157,11 +157,9 @@ function handleMinusScore(id){
 }
 
 function handleAddScoreReplies(id){
-    console.log(id)
     let updatedArr = []
     comments.forEach(comment => {
         const newArr = comment.replies.map(reply => {
-            console.log(reply.id)
             if (reply.id === id){
                 return {...reply, score: reply.score + 1}
             } else {
@@ -171,17 +169,14 @@ function handleAddScoreReplies(id){
         comment.replies = newArr
         updatedArr.push(comment)
     })
-    console.log(updatedArr)
     comments = updatedArr
     renderPosts()
 }
 
 function handleMinusScoreReplies(id){
-    console.log(id)
     let updatedArr = []
     comments.forEach(comment => {
         const newArr = comment.replies.map(reply => {
-            console.log(reply.id)
             if (reply.id === id){
                 return {...reply, score: reply.score - 1}
             } else {
