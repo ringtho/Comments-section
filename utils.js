@@ -110,7 +110,7 @@ function getNewReplyHtml(username, id){
     return `
     <section class="section comments">
         <div class="add-comment-container">
-            <textarea id="reply-submit-text">@${username} </textarea>
+            <textarea id="reply-submit-text" placeholder=${`@${username}`}></textarea>
             <div class="section-header add-comment">
                 <img class="section-avatar" src=${data.currentUser.image.png} />
                 <button class="submit-btn" id="reply-submit" data-id=${id}>REPLY</button>

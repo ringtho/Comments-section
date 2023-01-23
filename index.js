@@ -21,8 +21,8 @@ document.addEventListener("click", function(e){
     }
 
     if(e.target.id === "reply-submit"){
-        const id = parseInt(e.target.dataset.id)
-        handleSubmitReply(id)
+        // const id = parseInt(e.target.dataset.id)
+        handleSubmitReply(e.target.dataset.id)
     }
 
     if(e.target.id === "reply-btn"){
@@ -62,8 +62,10 @@ function handleSubmitComment(){
 }
 
 function handleSubmitReply(id){
+    console.log(id)
     const replyText = document.getElementById("reply-submit-text").value
     const newReply = comments.map(item => {
+        console.log(item.id)
         if (item.id === id){
             const reply = {
                 "id": uuid(),
@@ -109,7 +111,6 @@ function handleDeleteSubmit(id){
         })
         item.replies = repliesArr            
     })
-
     renderPosts()
 }
 
