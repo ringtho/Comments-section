@@ -120,10 +120,10 @@ function getAddNewCommentHtml(data){
     return `
     <section class="section comments">
         <div class="add-comment-container">
-            <textarea placeholder="Add a comment..."></textarea>
+            <textarea placeholder="Add a comment..." id="new-comment-text"></textarea>
             <div class="section-header add-comment">
                 <img class="section-avatar" src=${data.currentUser.image.png} />
-                <button class="submit-btn">SEND</button>
+                <button class="submit-btn" id="submit-btn">SEND</button>
             </div>
         </div>
     </section>
