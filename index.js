@@ -5,6 +5,7 @@ import {
 import { v4 as uuid } from 'https://jspm.dev/uuid'
 
 let comments = data.comments
+let deleteId = ""
 
 // let comments = []
 
@@ -34,12 +35,12 @@ document.addEventListener("click", function(e){
     }
 
     if (e.target.id === "delete-btn"){
-        console.log(e.target.dataset.id)
+        deleteId = e.target.dataset.id
         handleDeleteLinkClick()
     }
 
     if(e.target.id === "delete-submit"){
-        console.log("Delete button clicked")
+        handleDeleteSubmit(deleteId)
     }
 
     if (e.target.id === "cancel-btn"){
@@ -98,6 +99,20 @@ function handleDeleteLinkClick(){
     deleteModal.classList.remove("hide")
 }
 
+function handleDeleteSubmit(id){
+    comments.forEach(item => {
+        const repliesArr = item.replies.filter(reply => {
+            console.log(reply.id)
+            if(reply.id != id){
+                return reply
+            }
+        })
+        item.replies = repliesArr            
+    })
+
+    renderPosts()
+}
+
 function handleCancelBtnClick(){
     const deleteModal = document.getElementById("delete-modal")
     deleteModal.classList.add("hide")
@@ -110,13 +125,12 @@ function getPosts(comments){
         commentsHtml += post
     })
     return commentsHtml
-    
 }
 
 function renderPosts(){
     const displayHtml = `
-    ${getPosts(comments)}
     ${getAddNewCommentHtml(data)}
+    ${getPosts(comments)}
     ${getDeleteModalHtml()}
     `
     mainEl.innerHTML = displayHtml
