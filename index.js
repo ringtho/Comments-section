@@ -4,14 +4,14 @@ import {
 } from "./utils.js"
 
 // let comments = data.comments
+
 let comments = []
 
 const mainEl = document.getElementById("main")
-
 const deleteModal = document.getElementById("delete-modal")
 const newCommentTextarea = document.getElementById("new-comment-text")
 
-
+renderPosts()
 document.addEventListener("click", function(e){
     e.preventDefault()
     if(e.target.id === "submit-btn"){
@@ -37,16 +37,15 @@ document.addEventListener("click", function(e){
 
 function handleSubmitComment(){
     const newCommentTextarea = document.getElementById("new-comment-text")
-    const item = {
+    comments.push({
         "id": data.comments.length + 1,
         "content": newCommentTextarea.value,
+        "createdAt" : "1 second ago",
         "score": 0,
         "user": data.currentUser,
         "replies": []
-    }
-    comments.push(item)
+    })
     renderPosts()
-    console.log(comments)
 }
 
 function handleReplyBtnClick(username){
@@ -78,13 +77,13 @@ function getPosts(comments){
     
 }
 
-console.log(getPosts(comments))
-
 function renderPosts(){
-    mainEl.innerHTML = getPosts(comments)
-    mainEl.innerHTML += getAddNewCommentHtml(data)
-    document.body.innerHTML += getDeleteModalHtml()
-    
+    const displayHtml = `
+    ${getPosts(comments)}
+    ${getAddNewCommentHtml(data)}
+    ${getDeleteModalHtml()}
+    `
+    mainEl.innerHTML = displayHtml
 }
-renderPosts()
+
 
