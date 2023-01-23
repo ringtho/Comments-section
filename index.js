@@ -17,19 +17,19 @@ const newCommentTextarea = document.getElementById("new-comment-text")
 renderPosts()
 document.addEventListener("click", function(e){
     e.preventDefault()
-    if(e.target.id === "submit-btn"){
+    if (e.target.id === "submit-btn"){
         handleSubmitComment()
     }
 
-    if(e.target.id === "reply-submit"){
+    if (e.target.id === "reply-submit"){
         handleSubmitReply(e.target.dataset.id)
     }
 
-    if(e.target.id === "reply-btn"){
+    if (e.target.id === "reply-btn"){
         handleReplyLinkClick(e.target.dataset)
     }
 
-    if(e.target.id === "edit-btn"){
+    if (e.target.id === "edit-btn"){
         console.log(e.target.dataset.content)
         handleEditBtnClick(e.target.dataset)
     }
@@ -45,6 +45,22 @@ document.addEventListener("click", function(e){
 
     if (e.target.id === "cancel-btn"){
         handleCancelBtnClick()
+    }
+
+    if (e.target.id === "plus-btn"){
+        handleAddScore(e.target.dataset.id)
+    }
+
+    if (e.target.id === "minus-btn"){
+        handleMinusScore(e.target.dataset.id)
+    }
+
+    if (e.target.id === "plus-btn-reply"){
+        handleAddScoreReplies(e.target.dataset.id)
+    }
+
+    if (e.target.id === "minus-btn-reply"){
+        handleMinusScoreReplies(e.target.dataset.id)
     }
 })
 
@@ -114,6 +130,69 @@ function handleDeleteSubmit(id){
 function handleCancelBtnClick(){
     const deleteModal = document.getElementById("delete-modal")
     deleteModal.classList.add("hide")
+}
+
+function handleAddScore(id){
+    const newArr = comments.map(comment => {
+        if (comment.id === id){
+            return {...comment, score: comment.score + 1}
+        } else {
+            return comment
+        }
+    })
+    comments = newArr
+    renderPosts()
+}
+
+function handleMinusScore(id){
+    const newArr = comments.map(comment => {
+        if (comment.id === id){
+            return {...comment, score: comment.score - 1}
+        } else {
+            return comment
+        }
+    })
+    comments = newArr
+    renderPosts()
+}
+
+function handleAddScoreReplies(id){
+    console.log(id)
+    let updatedArr = []
+    comments.forEach(comment => {
+        const newArr = comment.replies.map(reply => {
+            console.log(reply.id)
+            if (reply.id === id){
+                return {...reply, score: reply.score + 1}
+            } else {
+                return reply
+            }
+        })
+        comment.replies = newArr
+        updatedArr.push(comment)
+    })
+    console.log(updatedArr)
+    comments = updatedArr
+    renderPosts()
+}
+
+function handleMinusScoreReplies(id){
+    console.log(id)
+    let updatedArr = []
+    comments.forEach(comment => {
+        const newArr = comment.replies.map(reply => {
+            console.log(reply.id)
+            if (reply.id === id){
+                return {...reply, score: reply.score - 1}
+            } else {
+                return reply
+            }
+        })
+        comment.replies = newArr
+        updatedArr.push(comment)
+    })
+    comments = updatedArr
+    renderPosts()
 }
 
 function getPosts(comments){

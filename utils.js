@@ -19,9 +19,9 @@ function getPostHtml(comment){
             
             <div class="section-btns">
                 <div class="section-add-remove-btn">
-                    <img class="plus-icon" id="plus-btn" src="images/icon-plus.svg" />
+                    <img class="plus-icon" id="plus-btn" data-id=${comment.id} src="images/icon-plus.svg" />
                     <p id="score" class="btn-text">${comment.score}</p>
-                    <img class="minus-icon" id="minus-btn" src="images/icon-minus.svg" />
+                    <img class="minus-icon" id="minus-btn" data-id=${comment.id} src="images/icon-minus.svg" />
                 </div>
                 <div id="replyBtn" class="section-reply-btn small-screen">
                     <img class="reply-icon" src="/images/icon-reply.svg" />
@@ -77,9 +77,9 @@ function getReplyHtml(replyArr){
                 </div>
                 <div class="section-btns">
                     <div class="section-add-remove-btn">
-                        <img class="plus-icon" src="images/icon-plus.svg" />
+                        <img class="plus-icon" id="plus-btn-reply" data-id=${reply.id} src="images/icon-plus.svg" />
                         <p class="btn-text">${reply.score}</p>
-                        <img class="minus-icon" src="images/icon-minus.svg" />
+                        <img class="minus-icon" data-id=${reply.id} id="minus-btn-reply" src="images/icon-minus.svg" />
                     </div>
                     ${isCurrentUser ?
                     `<div class="section-reply-btn mg small-screen">
